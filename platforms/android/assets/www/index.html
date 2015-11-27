@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+
+
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="">
+        <link rel="stylesheet" type="text/css" href="css/ratchet.min.css" />
+        <script src="js/ratchet.min.js"></script>
+    </head>
+        <title>Hello World</title>
+    <script>
+        var app = {
+            sendSms: function() {
+                var number = document.getElementById('numberTxt').value;
+                var message = document.getElementById('messageTxt').value;
+                alert(number);
+                alert(message);
+
+                //CONFIGURATION
+                var options = {
+                    replaceLineBreaks: false, // true to replace \n by a new line, false by default
+                    android: {
+                        intent: 'INTENT'  // send SMS with the native android SMS messaging
+                        //intent: '' // send SMS without open any other app
+                    }
+                };
+
+                var success = function () { alert('Message sent successfully'); };
+                var error = function (e) { alert('Message Failed:' + e); };
+
+                var nam = ["me", "you","her", "him","he","she"];
+                var num = ["8602920879", "8604167144"];
+
+                do {
+                    nam.sort(function () {
+                        return 0.5 - Math.random()
+                    });
+                    var nam2 = nam.sort(function () {
+                        return 0.5 - Math.random()
+                    });
+                }
+                while (nam[0]="me" and num[0]="8602920879");
+                for (i = 0; i < num.length; i++) {
+                    message = "Your are " + nam[i] + "'s secret santa.";
+                    sms.send(number, message, options, success, error);
+                }
+            }
+        };
+    </script>
+    <body>
+        <div class="content">
+            <div class="content-padded">
+                <form>
+                    <script>
+                        var cars = ["Saab", "Volvo", "BMW"];
+                        var nam = ["me", "you"];
+                        var num = ["8602920879", "8604167144"];
+                        document.getElementById("demo").innerHTML = cars[1];
+                        document.getElementById("demo2").innerHTML = nam;
+                    </script>
+                    <!--<input type="text" id="number" placeholder="Phone Number"><br/>
+                    <textarea id="message" placeholder="Message"></textarea>-->
+                    <input type="button" onclick="app.sendSms()" value="Send SMS" />
+                    <!-- <input type="button" class="btn btn-positive btn-block" id="sendMessage" value="Send Message"> -->
+                </form>
+            </div>
+        </div>
+        <p id="demo"></p>
+        <p id="demo2"></p>
+
+
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <!-- <script type="text/javascript" src="smsplugin.js"></script> -->
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+    </body>
+</html>
