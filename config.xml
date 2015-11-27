@@ -64,7 +64,7 @@
   <access origin="*"/>
   <plugin name="cordova-plugin-whitelist" version="1"/>
   <plugin name="info.asankan.phonegap.smsplugin" spec="0.1.0" source="pgb" />
-  <plugin name="com.cordova.plugins.sms" spec="0.1.1" source="pgb" />
+  <plugin name="com.cordova.plugins.sms" spec="0.1.2" source="pgb" />
   <allow-intent href="http://*/*"/>
   <allow-intent href="https://*/*"/>
   <allow-intent href="tel:*"/>
